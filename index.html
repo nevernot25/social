@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWRD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="nav-logo">PWRD</div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#pricing">Pricing</a>
+                <a href="sell.html">Sell Your Page</a>
+                <a href="#pricing" class="nav-cta">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">100M+ MONTHLY VIEWS</div>
+        <h1 class="hero-title">
+            Place Your Music<br/>
+            Where It Matters
+        </h1>
+        <p class="hero-subtitle">
+            Premium TikTok placements. Real reach.
+        </p>
+
+        <div class="hero-partners">
+            <div class="hero-partners-label">Trusted by</div>
+            <div class="hero-partners-logos">
+                <img src="logos/universal.svg" alt="Universal Pictures" class="hero-partner-logo">
+                <img src="logos/warner.png" alt="Warner Music Group" class="hero-partner-logo">
+                <img src="logos/create.png" alt="Create Music Group" class="hero-partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section">
+        <div class="stats-intro">We own and operate global TikTok channels across multiple genres and formats</div>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">100M+</div>
+                <div class="stat-label">Views Per Month</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Pages</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Completed Campaigns</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">60+</div>
+                <div class="stat-label">Labels & Artists worked with</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="section-header">
+            <div class="section-label">WHAT WE DO</div>
+            <h2 class="section-title">Pick Your Format</h2>
+            <p class="services-note">Example channels shown below. We operate 10+ pages with 100M+ monthly views.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-item">
+                <div class="service-number">01</div>
+                <h3 class="service-title">Lyric Channels</h3>
+                <p class="service-description">
+                    Your song. Our lyric videos. Massive engagement across all genres.
+                </p>
+                <div class="service-example-label">Example channel:</div>
+                <div class="service-embed">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@lyricssong426" data-unique-id="lyricssong426" data-embed-type="creator" style="max-width: 780px; min-width: 288px;">
+                        <section>
+                            <a target="_blank" href="https://www.tiktok.com/@lyricssong426?refer=creator_embed">@lyricssong426</a>
+                        </section>
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-number">02</div>
+                <h3 class="service-title">Topic Channels</h3>
+                <p class="service-description">
+                    Viral moments. Sports, Love, Relationships. Your music soundtracks the culture.
+                </p>
+                <div class="service-example-label">Example channel:</div>
+                <div class="service-embed">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@realbrozz" data-unique-id="realbrozz" data-embed-type="creator" style="max-width: 780px; min-width: 288px;">
+                        <section>
+                            <a target="_blank" href="https://www.tiktok.com/@realbrozz?refer=creator_embed">@realbrozz</a>
+                        </section>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Calculator -->
+    <section id="pricing" class="pricing">
+        <div class="section-header">
+            <div class="section-label">PRICING</div>
+            <h2 class="section-title">Build Your Campaign</h2>
+        </div>
+
+        <div class="calculator">
+            <!-- Contact Info -->
+            <div class="checkout-section">
+                <h3 class="checkout-section-title">Contact</h3>
+                <div class="checkout-inputs">
+                    <input type="url" id="song-link" class="checkout-input" placeholder="TikTok song link" />
+                    <select id="genre-select" class="checkout-input">
+                        <option value="">Select genre</option>
+                        <option value="Pop">Pop</option>
+                        <option value="Hip Hop">Hip Hop / Rap</option>
+                        <option value="Country">Country</option>
+                        <option value="EDM">EDM</option>
+                        <option value="Latin">Latin</option>
+                        <option value="R&B">R&B</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Indie">Indie</option>
+                        <option value="Folk">Folk</option>
+                        <option value="Afrobeats">Afrobeats</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Package Selection -->
+            <div class="checkout-section">
+                <h3 class="checkout-section-title">Your Package</h3>
+
+                <div class="package-item">
+                    <div class="package-info">
+                        <div class="package-name">Lyric Posts</div>
+                        <div class="package-price">$100 first · $50 each additional</div>
+                    </div>
+                    <div class="package-control">
+                        <button class="qty-btn" onclick="updateCount('lyric', -1)">−</button>
+                        <span class="qty-value" id="lyric-count">0</span>
+                        <button class="qty-btn" onclick="updateCount('lyric', 1)">+</button>
+                    </div>
+                </div>
+
+                <div class="package-item">
+                    <div class="package-info">
+                        <div class="package-name">Topic Posts</div>
+                        <div class="package-price">$100 first · $30 each additional</div>
+                    </div>
+                    <div class="package-control">
+                        <button class="qty-btn" onclick="updateCount('topic', -1)">−</button>
+                        <span class="qty-value" id="topic-count">0</span>
+                        <button class="qty-btn" onclick="updateCount('topic', 1)">+</button>
+                    </div>
+                </div>
+
+                <button type="button" class="promo-btn" onclick="applyBundle()">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2 8h12M8 2v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Apply $150 Bundle (Save $50)
+                </button>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="checkout-section order-summary">
+                <div class="summary-row" id="bundle-discount-row" style="display: none;">
+                    <span class="summary-label">Bundle discount</span>
+                    <span class="summary-value discount">−$50</span>
+                </div>
+                <div class="summary-row total-row">
+                    <span class="summary-label">Total</span>
+                    <div class="total-amount">
+                        <span id="original-price" class="strike-price" style="display: none;">$200</span>
+                        <span id="total-amount" class="final-price">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="checkout-btn" id="checkout-btn" onclick="checkout()" disabled>
+                Complete Order
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">PWRD</div>
+                <div class="footer-text">© 2024 · Premium TikTok Marketing</div>
+            </div>
+            <div class="footer-contact">
+                <a href="mailto:get@pwrd.live">get@pwrd.live</a>
+            </div>
+        </div>
+    </footer>
+
+    <script async src="https://www.tiktok.com/embed.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

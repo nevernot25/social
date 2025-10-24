@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmed · PWRD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .success-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .success-content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .success-check {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .success-check svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .success-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .success-message {
+            font-size: 1.2rem;
+            color: var(--gray-400);
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            letter-spacing: -0.01em;
+        }
+
+        .success-cta {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--white);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: -0.01em;
+        }
+
+        .success-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes checkIn {
+            0% {
+                transform: scale(0) rotate(-45deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotate(-45deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .success-check {
+            animation: checkIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-page">
+        <div class="success-content">
+            <div class="success-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+
+            <h1 class="success-title">You're In</h1>
+
+            <p class="success-message">
+                Campaign booked. We'll reach out within 24 hours to get your song live.
+            </p>
+
+            <a href="/" class="success-cta">Back Home</a>
+        </div>
+    </div>
+</body>
+</html>
