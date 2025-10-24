@@ -251,16 +251,16 @@ body {
 
 /* Trust Features */
 .trust-features {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 4rem auto 0;
-    padding: 3rem 2rem;
+    padding: 3rem 4rem;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .trust-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 5rem;
+    gap: 6rem;
 }
 
 .trust-item {
