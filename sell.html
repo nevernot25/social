@@ -17,7 +17,6 @@
             <div class="nav-logo"><a href="/" style="color: inherit; text-decoration: none;">PWRD</a></div>
             <div class="nav-links">
                 <a href="/#services">Services</a>
-                <a href="/sell.html">Sell Your Page</a>
                 <a href="/#pricing" class="nav-cta">Book Now</a>
             </div>
         </div>
@@ -32,6 +31,7 @@
         </div>
 
         <div class="sell-form-container">
+            <div id="form-message" class="form-message" style="display: none;"></div>
             <form class="sell-form" id="sell-form">
                 <input type="text" id="tiktok-link" class="checkout-input" placeholder="TikTok page link (e.g., https://tiktok.com/@username)" required />
                 <input type="text" id="seller-name" class="checkout-input" placeholder="Your name" required />
@@ -50,7 +50,8 @@
                 <div class="footer-logo">PWRD</div>
                 <div class="footer-text">© 2024 · Premium TikTok Marketing</div>
             </div>
-            <div class="footer-contact">
+            <div class="footer-links">
+                <a href="sell.html">Sell Your Page</a>
                 <a href="mailto:get@pwrd.live">get@pwrd.live</a>
             </div>
         </div>
@@ -59,6 +60,18 @@
     <script>
         // Sell page form submission
         const sellForm = document.getElementById('sell-form');
+        const formMessage = document.getElementById('form-message');
+
+        function showMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = 'block';
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 8000);
+        }
+
         if (sellForm) {
             sellForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
@@ -70,7 +83,7 @@
 
                 // Validate TikTok URL
                 if (!tiktokLink.includes('tiktok.com')) {
-                    alert('Please enter a valid TikTok link (must contain tiktok.com)');
+                    showMessage('Please enter a valid TikTok link (must contain tiktok.com)', 'error');
                     return;
                 }
 
@@ -91,14 +104,14 @@
                     });
 
                     if (response.ok) {
-                        alert('Thank you! Your inquiry has been submitted. We\'ll get back to you soon.');
+                        showMessage('Thank you! Your inquiry has been submitted. We\'ll get back to you within 24-48 hours.', 'success');
                         sellForm.reset();
                     } else {
                         throw new Error('Failed to submit');
                     }
                 } catch (error) {
                     console.error('Error:', error);
-                    alert('Something went wrong. Please try again or email us directly at get@pwrd.live');
+                    showMessage('Something went wrong. Please try again or email us directly at get@pwrd.live', 'error');
                 } finally {
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Submit';
