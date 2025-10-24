@@ -251,9 +251,9 @@ body {
 
 /* Trust Features */
 .trust-features {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 4rem auto 0;
-    padding: 3rem 3rem;
+    padding: 3rem 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
