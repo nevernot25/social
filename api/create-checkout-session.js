@@ -7,29 +7,43 @@ const PRICES = {
     fastDelivery: 20
 };
 
-function calculateTotal(lyricCount, topicCount, fastDelivery) {
-    let total = 0;
+const VOUCHERS = {
+    'FRIENDS10': 0.10
+};
+
+const TAX_RATE = 0.081;
+
+function calculateTotal(lyricCount, topicCount, fastDelivery, voucherCode) {
+    let subtotal = 0;
 
     if (lyricCount > 0 && topicCount > 0) {
-        total += PRICES.combo;
-        if (lyricCount > 1) total += (lyricCount - 1) * PRICES.lyric.additional;
-        if (topicCount > 1) total += (topicCount - 1) * PRICES.topic.additional;
+        subtotal += PRICES.combo;
+        if (lyricCount > 1) subtotal += (lyricCount - 1) * PRICES.lyric.additional;
+        if (topicCount > 1) subtotal += (topicCount - 1) * PRICES.topic.additional;
     } else {
         if (lyricCount > 0) {
-            total += PRICES.lyric.first;
-            if (lyricCount > 1) total += (lyricCount - 1) * PRICES.lyric.additional;
+            subtotal += PRICES.lyric.first;
+            if (lyricCount > 1) subtotal += (lyricCount - 1) * PRICES.lyric.additional;
         }
         if (topicCount > 0) {
-            total += PRICES.topic.first;
-            if (topicCount > 1) total += (topicCount - 1) * PRICES.topic.additional;
+            subtotal += PRICES.topic.first;
+            if (topicCount > 1) subtotal += (topicCount - 1) * PRICES.topic.additional;
         }
     }
 
     if (fastDelivery) {
-        total += PRICES.fastDelivery;
+        subtotal += PRICES.fastDelivery;
     }
 
-    return total;
+    // Apply voucher
+    if (voucherCode && VOUCHERS[voucherCode.toUpperCase()]) {
+        subtotal -= subtotal * VOUCHERS[voucherCode.toUpperCase()];
+    }
+
+    // Add tax
+    const total = subtotal + (subtotal * TAX_RATE);
+
+    return Math.round(total * 100) / 100; // Round to 2 decimals
 }
 
 module.exports = async (req, res) => {
@@ -38,9 +52,9 @@ module.exports = async (req, res) => {
     }
 
     try {
-        const { lyricCount, topicCount, fastDelivery, description, songLink, genre } = req.body;
+        const { lyricCount, topicCount, fastDelivery, voucherCode, description, songLink, genre } = req.body;
 
-        const total = calculateTotal(lyricCount, topicCount, fastDelivery);
+        const total = calculateTotal(lyricCount, topicCount, fastDelivery, voucherCode);
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],

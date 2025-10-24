@@ -8,6 +8,12 @@ const PRICES = {
 
 let counts = { lyric: 0, topic: 0 };
 let bundleApplied = false;
+let voucherApplied = false;
+let voucherCode = '';
+const VOUCHERS = {
+    'FRIENDS10': 0.10
+};
+const TAX_RATE = 0.081;
 
 // Stripe
 const stripe = Stripe('pk_live_51SLngBFMBNQFsANi1d0FF4ZyyDohJoovuwdW9NJtk14fBe4FW9Xcrp1aS9MZDVAck0nIcAvkBMGxhY7DNIX8hnPH00ZI8NnzCj');
@@ -30,75 +36,123 @@ function applyBundle() {
     calculatePrice();
 }
 
+// Apply voucher
+function applyVoucher() {
+    const input = document.getElementById('voucher-code');
+    const code = input.value.trim().toUpperCase();
+    const messageEl = document.getElementById('voucher-message');
+
+    if (!code) {
+        messageEl.textContent = 'Please enter a voucher code';
+        messageEl.className = 'voucher-message error';
+        return;
+    }
+
+    if (VOUCHERS[code]) {
+        voucherApplied = true;
+        voucherCode = code;
+        messageEl.textContent = '✓ Voucher applied!';
+        messageEl.className = 'voucher-message success';
+        input.disabled = true;
+        calculatePrice();
+    } else {
+        messageEl.textContent = 'Invalid voucher code';
+        messageEl.className = 'voucher-message error';
+        voucherApplied = false;
+        voucherCode = '';
+    }
+}
+
 // Calculate price
 function calculatePrice() {
     const { lyric, topic } = counts;
-    let total = 0;
+    let subtotal = 0;
     let originalPrice = 0;
-    let showDiscount = false;
-    const totalVideos = lyric + topic;
+    let showBundleDiscount = false;
 
     if (lyric === 0 && topic === 0) {
         document.getElementById('total-amount').textContent = '$0';
+        document.getElementById('subtotal-amount').textContent = '$0';
+        document.getElementById('tax-amount').textContent = '$0';
         document.getElementById('checkout-btn').disabled = true;
         document.getElementById('bundle-discount-row').style.display = 'none';
+        document.getElementById('voucher-discount-row').style.display = 'none';
         document.getElementById('original-price').style.display = 'none';
-        document.getElementById('estimated-views-row').style.display = 'none';
+        document.getElementById('views-highlight').style.display = 'none';
         document.getElementById('fast-delivery-row').style.display = 'none';
         return;
     }
 
-    // Combo discount
+    // Calculate subtotal with bundle discount
     if (lyric > 0 && topic > 0 && bundleApplied) {
-        total += PRICES.combo;
+        subtotal += PRICES.combo;
         originalPrice = PRICES.lyric.first + PRICES.topic.first;
-        showDiscount = true;
+        showBundleDiscount = true;
         if (lyric > 1) {
-            total += (lyric - 1) * PRICES.lyric.additional;
+            subtotal += (lyric - 1) * PRICES.lyric.additional;
             originalPrice += (lyric - 1) * PRICES.lyric.additional;
         }
         if (topic > 1) {
-            total += (topic - 1) * PRICES.topic.additional;
+            subtotal += (topic - 1) * PRICES.topic.additional;
             originalPrice += (topic - 1) * PRICES.topic.additional;
         }
     } else {
         if (lyric > 0) {
-            total += PRICES.lyric.first;
-            if (lyric > 1) total += (lyric - 1) * PRICES.lyric.additional;
+            subtotal += PRICES.lyric.first;
+            if (lyric > 1) subtotal += (lyric - 1) * PRICES.lyric.additional;
         }
         if (topic > 0) {
-            total += PRICES.topic.first;
-            if (topic > 1) total += (topic - 1) * PRICES.topic.additional;
+            subtotal += PRICES.topic.first;
+            if (topic > 1) subtotal += (topic - 1) * PRICES.topic.additional;
         }
     }
 
-    // Check delivery speed
+    // Add fast delivery
     const fastDelivery = document.querySelector('input[name="delivery"]:checked')?.value === 'fast';
     if (fastDelivery) {
-        total += PRICES.fastDelivery;
+        subtotal += PRICES.fastDelivery;
         document.getElementById('fast-delivery-row').style.display = 'flex';
     } else {
         document.getElementById('fast-delivery-row').style.display = 'none';
     }
 
-    // Calculate and show estimated views
-    const estimatedViews = totalVideos * 30000;
-    document.getElementById('estimated-views').textContent = estimatedViews.toLocaleString();
-    document.getElementById('estimated-views-row').style.display = 'flex';
+    // Apply voucher discount
+    let voucherDiscount = 0;
+    if (voucherApplied && VOUCHERS[voucherCode]) {
+        voucherDiscount = subtotal * VOUCHERS[voucherCode];
+        document.getElementById('voucher-discount-amount').textContent = `−$${voucherDiscount.toFixed(2)}`;
+        document.getElementById('voucher-discount-row').style.display = 'flex';
+        subtotal -= voucherDiscount;
+    } else {
+        document.getElementById('voucher-discount-row').style.display = 'none';
+    }
 
-    document.getElementById('total-amount').textContent = `$${total}`;
+    // Calculate tax
+    const tax = subtotal * TAX_RATE;
+
+    // Calculate final total
+    const total = subtotal + tax;
+
+    // Update display
+    document.getElementById('subtotal-amount').textContent = `$${(subtotal + (voucherApplied ? voucherDiscount : 0)).toFixed(2)}`;
+    document.getElementById('tax-amount').textContent = `$${tax.toFixed(2)}`;
+    document.getElementById('total-amount').textContent = `$${total.toFixed(2)}`;
     document.getElementById('checkout-btn').disabled = false;
 
-    // Show/hide discount row and original price
-    if (showDiscount) {
-        const savings = originalPrice - total;
-        document.getElementById('original-price').textContent = `$${originalPrice}`;
-        document.getElementById('original-price').style.display = 'inline';
+    // Show/hide bundle discount
+    if (showBundleDiscount) {
+        const bundleDiscount = originalPrice - (subtotal + (voucherApplied ? voucherDiscount : 0) - (fastDelivery ? PRICES.fastDelivery : 0));
+        document.getElementById('bundle-discount-amount').textContent = `−$${bundleDiscount.toFixed(2)}`;
         document.getElementById('bundle-discount-row').style.display = 'flex';
     } else {
         document.getElementById('bundle-discount-row').style.display = 'none';
-        document.getElementById('original-price').style.display = 'none';
     }
+
+    // Calculate and show estimated views as range
+    const minViews = (lyric * 30000) + (topic * 25000);
+    const maxViews = (lyric * 100000) + (topic * 70000);
+    document.getElementById('views-range').textContent = `${minViews.toLocaleString()} - ${maxViews.toLocaleString()} views`;
+    document.getElementById('views-highlight').style.display = 'flex';
 }
 
 // Checkout
@@ -123,7 +177,7 @@ async function checkout() {
         return;
     }
 
-    const total = parseInt(document.getElementById('total-amount').textContent.replace('$', ''));
+    const total = parseFloat(document.getElementById('total-amount').textContent.replace('$', ''));
 
     let description = 'PWRD Campaign: ';
     if (lyric > 0 && topic > 0) {
@@ -135,6 +189,9 @@ async function checkout() {
     }
     description += ` | Genre: ${genre} | Song: ${songLink}`;
     description += ` | Delivery: ${fastDelivery ? 'Fast (5 days)' : 'Normal (2 weeks)'}`;
+    if (voucherApplied) {
+        description += ` | Voucher: ${voucherCode}`;
+    }
 
     try {
         const response = await fetch('/api/create-checkout-session', {
@@ -144,6 +201,7 @@ async function checkout() {
                 lyricCount: lyric,
                 topicCount: topic,
                 fastDelivery: fastDelivery,
+                voucherCode: voucherApplied ? voucherCode : null,
                 total,
                 description,
                 songLink,

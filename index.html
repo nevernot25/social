@@ -17,7 +17,6 @@
             <div class="nav-logo">PWRD</div>
             <div class="nav-links">
                 <a href="#services">Services</a>
-                <a href="#pricing">Pricing</a>
                 <a href="sell.html">Sell Your Page</a>
                 <a href="#pricing" class="nav-cta">Book Now</a>
             </div>
@@ -67,6 +66,24 @@
             <div class="stat-item">
                 <div class="stat-number">60+</div>
                 <div class="stat-label">Labels & Artists worked with</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Features -->
+    <section class="trust-features">
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-icon">✓</div>
+                <div class="trust-title">100% Safe & Satisfaction Guaranteed</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">👥</div>
+                <div class="trust-title">Real Accounts & Real Views</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">⚡</div>
+                <div class="trust-title">Fast Delivery - You Get Results</div>
             </div>
         </div>
     </section>
@@ -200,19 +217,45 @@
                 </div>
             </div>
 
+            <!-- Voucher Code -->
+            <div class="checkout-section">
+                <div class="voucher-input-container">
+                    <input type="text" id="voucher-code" class="checkout-input voucher-input" placeholder="Voucher code">
+                    <button type="button" class="voucher-btn" onclick="applyVoucher()">Apply</button>
+                </div>
+                <div id="voucher-message" class="voucher-message"></div>
+            </div>
+
+            <!-- Estimated Views Highlight -->
+            <div class="views-highlight" id="views-highlight" style="display: none;">
+                <div class="views-icon">👁️</div>
+                <div class="views-content">
+                    <div class="views-label">Estimated Reach</div>
+                    <div class="views-range" id="views-range">0</div>
+                </div>
+            </div>
+
             <!-- Order Summary -->
             <div class="checkout-section order-summary">
-                <div class="summary-row" id="estimated-views-row" style="display: none;">
-                    <span class="summary-label">Estimated views</span>
-                    <span class="summary-value" id="estimated-views">0</span>
+                <div class="summary-row">
+                    <span class="summary-label">Subtotal</span>
+                    <span class="summary-value" id="subtotal-amount">$0</span>
                 </div>
                 <div class="summary-row" id="bundle-discount-row" style="display: none;">
                     <span class="summary-label">Bundle discount</span>
-                    <span class="summary-value discount">−$20</span>
+                    <span class="summary-value discount" id="bundle-discount-amount">−$20</span>
+                </div>
+                <div class="summary-row" id="voucher-discount-row" style="display: none;">
+                    <span class="summary-label">Voucher (FRIENDS10)</span>
+                    <span class="summary-value discount" id="voucher-discount-amount">−$0</span>
                 </div>
                 <div class="summary-row" id="fast-delivery-row" style="display: none;">
                     <span class="summary-label">Fast delivery</span>
                     <span class="summary-value">+$20</span>
+                </div>
+                <div class="summary-row" id="tax-row">
+                    <span class="summary-label">MWST (8.1%)</span>
+                    <span class="summary-value" id="tax-amount">$0</span>
                 </div>
                 <div class="summary-row total-row">
                     <span class="summary-label">Total</span>
