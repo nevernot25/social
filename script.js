@@ -173,6 +173,12 @@ async function checkout() {
         return;
     }
 
+    // Validate TikTok URL
+    if (!songLink.includes('tiktok.com')) {
+        alert('Please enter a valid TikTok link (must contain tiktok.com)');
+        return;
+    }
+
     if (!genre) {
         alert('Please select a genre');
         return;

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PWRD</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -126,7 +127,7 @@
             <div class="checkout-section">
                 <h3 class="checkout-section-title">Contact</h3>
                 <div class="checkout-inputs">
-                    <input type="url" id="song-link" class="checkout-input" placeholder="TikTok song link" />
+                    <input type="text" id="song-link" class="checkout-input" placeholder="TikTok song link (e.g., https://tiktok.com/@artist/video/...)" />
                     <select id="genre-select" class="checkout-input">
                         <option value="">Select genre</option>
                         <option value="Pop">Pop</option>
@@ -234,7 +235,7 @@
                     <span class="summary-value">+$20</span>
                 </div>
                 <div class="summary-row" id="tax-row">
-                    <span class="summary-label">MWST (8.1%)</span>
+                    <span class="summary-label">Taxes (8.1%)</span>
                     <span class="summary-value" id="tax-amount">$0</span>
                 </div>
                 <div class="summary-row total-row">
@@ -256,31 +257,40 @@
             <div class="trust-grid">
                 <div class="trust-item">
                     <div class="trust-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                             <polyline points="22 4 12 14.01 9 11.01"/>
                         </svg>
                     </div>
-                    <div class="trust-title">100% Safe & Satisfaction Guaranteed</div>
+                    <div class="trust-content">
+                        <div class="trust-title">100% Safe & Satisfaction Guaranteed</div>
+                        <div class="trust-description">Secure payments, full transparency, money-back guarantee if results don't meet expectations</div>
+                    </div>
                 </div>
                 <div class="trust-item">
                     <div class="trust-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
                             <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
-                    <div class="trust-title">Real Accounts & Real Views</div>
+                    <div class="trust-content">
+                        <div class="trust-title">Real Accounts & Real Views</div>
+                        <div class="trust-description">No bots, no fake engagement — every view comes from our established TikTok channels with genuine audiences</div>
+                    </div>
                 </div>
                 <div class="trust-item">
                     <div class="trust-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                         </svg>
                     </div>
-                    <div class="trust-title">Fast Delivery — You Get Results</div>
+                    <div class="trust-content">
+                        <div class="trust-title">Fast Delivery — You Get Results</div>
+                        <div class="trust-description">Content goes live within your selected timeframe, with regular updates and performance tracking throughout</div>
+                    </div>
                 </div>
             </div>
         </div>

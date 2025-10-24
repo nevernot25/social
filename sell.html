@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sell Your Page · PWRD</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -33,7 +34,7 @@
 
         <div class="sell-form-container">
             <form class="sell-form" id="sell-form">
-                <input type="url" id="tiktok-link" class="checkout-input" placeholder="TikTok page link" required />
+                <input type="text" id="tiktok-link" class="checkout-input" placeholder="TikTok page link (e.g., https://tiktok.com/@username)" required />
                 <input type="text" id="seller-name" class="checkout-input" placeholder="Your name" required />
                 <input type="email" id="seller-email" class="checkout-input" placeholder="Your email" required />
                 <input type="text" id="price-wish" class="checkout-input" placeholder="Price expectation (e.g., $5,000)" required />
@@ -67,6 +68,12 @@
                 const name = document.getElementById('seller-name').value;
                 const email = document.getElementById('seller-email').value;
                 const priceWish = document.getElementById('price-wish').value;
+
+                // Validate TikTok URL
+                if (!tiktokLink.includes('tiktok.com')) {
+                    alert('Please enter a valid TikTok link (must contain tiktok.com)');
+                    return;
+                }
 
                 const submitBtn = sellForm.querySelector('button[type="submit"]');
                 submitBtn.disabled = true;

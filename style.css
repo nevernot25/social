@@ -251,39 +251,60 @@ body {
 
 /* Trust Features */
 .trust-features {
-    max-width: 900px;
-    margin: 3rem auto 0;
-    padding: 2.5rem 2rem;
+    max-width: 1400px;
+    margin: 4rem auto 0;
+    padding: 3rem 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .trust-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
 }
 
 .trust-item {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    align-items: flex-start;
+    gap: 1rem;
     text-align: left;
 }
 
 .trust-icon {
     flex-shrink: 0;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     color: var(--black);
-    opacity: 0.7;
+    opacity: 0.8;
+    margin-top: 0.25rem;
+}
+
+.trust-content {
+    flex: 1;
 }
 
 .trust-title {
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.3;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.trust-description {
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
     color: var(--gray-600);
+}
+
+@media (max-width: 968px) {
+    .trust-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 /* Services */
