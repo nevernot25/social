@@ -265,38 +265,39 @@ body {
 
 .trust-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    gap: 1.25rem;
+    gap: 1.5rem;
     text-align: left;
 }
 
 .trust-icon {
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     color: var(--black);
     opacity: 0.8;
 }
 
 .trust-content {
     flex: 1;
+    min-width: 0;
 }
 
 .trust-title {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 600;
     letter-spacing: -0.01em;
-    line-height: 1.4;
+    line-height: 1.5;
     color: var(--black);
     margin-bottom: 0.75rem;
 }
 
 .trust-description {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 400;
     letter-spacing: -0.01em;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--gray-600);
 }
 
