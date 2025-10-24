@@ -70,23 +70,6 @@
         </div>
     </section>
 
-    <!-- Trust Features -->
-    <section class="trust-features">
-        <div class="trust-grid">
-            <div class="trust-item">
-                <div class="trust-icon">✓</div>
-                <div class="trust-title">100% Safe & Satisfaction Guaranteed</div>
-            </div>
-            <div class="trust-item">
-                <div class="trust-icon">👥</div>
-                <div class="trust-title">Real Accounts & Real Views</div>
-            </div>
-            <div class="trust-item">
-                <div class="trust-icon">⚡</div>
-                <div class="trust-title">Fast Delivery - You Get Results</div>
-            </div>
-        </div>
-    </section>
 
     <!-- Services -->
     <section id="services" class="services">
@@ -162,7 +145,13 @@
 
             <!-- Package Selection -->
             <div class="checkout-section">
-                <h3 class="checkout-section-title">Your Package</h3>
+                <div class="package-header">
+                    <h3 class="checkout-section-title">Your Package</h3>
+                    <div class="estimated-reach" id="estimated-reach" style="display: none;">
+                        <span class="reach-label">Est. Reach:</span>
+                        <span class="reach-value" id="reach-value">0</span>
+                    </div>
+                </div>
 
                 <div class="package-item">
                     <div class="package-info">
@@ -226,15 +215,6 @@
                 <div id="voucher-message" class="voucher-message"></div>
             </div>
 
-            <!-- Estimated Views Highlight -->
-            <div class="views-highlight" id="views-highlight" style="display: none;">
-                <div class="views-icon">👁️</div>
-                <div class="views-content">
-                    <div class="views-label">Estimated Reach</div>
-                    <div class="views-range" id="views-range">0</div>
-                </div>
-            </div>
-
             <!-- Order Summary -->
             <div class="checkout-section order-summary">
                 <div class="summary-row">
@@ -269,6 +249,40 @@
             <button class="checkout-btn" id="checkout-btn" onclick="checkout()" disabled>
                 Complete Order
             </button>
+        </div>
+
+        <!-- Trust Features -->
+        <div class="trust-features">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="trust-title">100% Safe & Satisfaction Guaranteed</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <div class="trust-title">Real Accounts & Real Views</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <div class="trust-title">Fast Delivery — You Get Results</div>
+                </div>
+            </div>
         </div>
     </section>
 

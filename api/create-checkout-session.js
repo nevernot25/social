@@ -8,7 +8,8 @@ const PRICES = {
 };
 
 const VOUCHERS = {
-    'FRIENDS10': 0.10
+    'FRIENDS10': 0.10,
+    'TEST99': 0.99
 };
 
 const TAX_RATE = 0.081;

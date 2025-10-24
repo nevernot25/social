@@ -251,32 +251,39 @@ body {
 
 /* Trust Features */
 .trust-features {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding: 2.5rem 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .trust-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
 }
 
 .trust-item {
-    text-align: center;
-    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: left;
 }
 
 .trust-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--black);
+    opacity: 0.7;
 }
 
 .trust-title {
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 500;
     letter-spacing: -0.01em;
-    line-height: 1.4;
+    line-height: 1.3;
+    color: var(--gray-600);
 }
 
 /* Services */
@@ -413,11 +420,42 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.package-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
 .checkout-section-title {
     font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     letter-spacing: -0.01em;
+}
+
+.estimated-reach {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.02) 100%);
+    border-radius: 6px;
+}
+
+.reach-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--gray-600);
+}
+
+.reach-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--black);
 }
 
 .checkout-inputs {
@@ -647,43 +685,6 @@ select.checkout-input {
 
 .voucher-message.error {
     color: #dc2626;
-}
-
-/* Views Highlight */
-.views-highlight {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.01) 100%);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 8px;
-    margin-bottom: 2rem;
-}
-
-.views-icon {
-    font-size: 2rem;
-    opacity: 0.8;
-}
-
-.views-content {
-    flex: 1;
-}
-
-.views-label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--gray-600);
-    margin-bottom: 0.25rem;
-}
-
-.views-range {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--black);
 }
 
 /* Order Summary */

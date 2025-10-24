@@ -60,7 +60,7 @@
         // Sell page form submission
         const sellForm = document.getElementById('sell-form');
         if (sellForm) {
-            sellForm.addEventListener('submit', function(e) {
+            sellForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
                 const tiktokLink = document.getElementById('tiktok-link').value;
@@ -68,17 +68,35 @@
                 const email = document.getElementById('seller-email').value;
                 const priceWish = document.getElementById('price-wish').value;
 
-                const subject = 'Sell TikTok Page Inquiry';
-                const body = `Name: ${name}
-Email: ${email}
-TikTok Page: ${tiktokLink}
-Price Expectation: ${priceWish}`;
+                const submitBtn = sellForm.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
 
-                window.location.href = `mailto:get@pwrd.live?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                try {
+                    const response = await fetch('/api/sell-page-inquiry', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            tiktokLink,
+                            name,
+                            email,
+                            priceExpectation: priceWish
+                        })
+                    });
 
-                // Optional: Reset form
-                sellForm.reset();
-                alert('Thank you! Opening email client...');
+                    if (response.ok) {
+                        alert('Thank you! Your inquiry has been submitted. We\'ll get back to you soon.');
+                        sellForm.reset();
+                    } else {
+                        throw new Error('Failed to submit');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Something went wrong. Please try again or email us directly at get@pwrd.live');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                }
             });
         }
     </script>

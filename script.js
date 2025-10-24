@@ -11,7 +11,8 @@ let bundleApplied = false;
 let voucherApplied = false;
 let voucherCode = '';
 const VOUCHERS = {
-    'FRIENDS10': 0.10
+    'FRIENDS10': 0.10,
+    'TEST99': 0.99
 };
 const TAX_RATE = 0.081;
 
@@ -78,7 +79,7 @@ function calculatePrice() {
         document.getElementById('bundle-discount-row').style.display = 'none';
         document.getElementById('voucher-discount-row').style.display = 'none';
         document.getElementById('original-price').style.display = 'none';
-        document.getElementById('views-highlight').style.display = 'none';
+        document.getElementById('estimated-reach').style.display = 'none';
         document.getElementById('fast-delivery-row').style.display = 'none';
         return;
     }
@@ -151,8 +152,8 @@ function calculatePrice() {
     // Calculate and show estimated views as range
     const minViews = (lyric * 30000) + (topic * 25000);
     const maxViews = (lyric * 100000) + (topic * 70000);
-    document.getElementById('views-range').textContent = `${minViews.toLocaleString()} - ${maxViews.toLocaleString()} views`;
-    document.getElementById('views-highlight').style.display = 'flex';
+    document.getElementById('reach-value').textContent = `${minViews.toLocaleString()}-${maxViews.toLocaleString()} views`;
+    document.getElementById('estimated-reach').style.display = 'flex';
 }
 
 // Checkout
