@@ -1,12 +1,13 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const PRICES = {
-    lyric: { first: 100, additional: 50 },
-    topic: { first: 100, additional: 30 },
-    combo: 150
+    lyric: { first: 80, additional: 40 },
+    topic: { first: 60, additional: 30 },
+    combo: 120,
+    fastDelivery: 20
 };
 
-function calculateTotal(lyricCount, topicCount) {
+function calculateTotal(lyricCount, topicCount, fastDelivery) {
     let total = 0;
 
     if (lyricCount > 0 && topicCount > 0) {
@@ -24,6 +25,10 @@ function calculateTotal(lyricCount, topicCount) {
         }
     }
 
+    if (fastDelivery) {
+        total += PRICES.fastDelivery;
+    }
+
     return total;
 }
 
@@ -33,9 +38,9 @@ module.exports = async (req, res) => {
     }
 
     try {
-        const { lyricCount, topicCount, description, songLink, genre } = req.body;
+        const { lyricCount, topicCount, fastDelivery, description, songLink, genre } = req.body;
 
-        const total = calculateTotal(lyricCount, topicCount);
+        const total = calculateTotal(lyricCount, topicCount, fastDelivery);
 
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
