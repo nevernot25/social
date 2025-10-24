@@ -9,7 +9,7 @@ let counts = { lyric: 0, topic: 0 };
 let bundleApplied = false;
 
 // Stripe
-const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY_HERE');
+const stripe = Stripe('pk_live_51SLngBFMBNQFsANi1d0FF4ZyyDohJoovuwdW9NJtk14fBe4FW9Xcrp1aS9MZDVAck0nIcAvkBMGxhY7DNIX8hnPH00ZI8NnzCj');
 
 // Update counter
 function updateCount(type, change) {
@@ -117,7 +117,7 @@ async function checkout() {
     description += ` | Genre: ${genre} | Song: ${songLink}`;
 
     try {
-        const response = await fetch('/create-checkout-session', {
+        const response = await fetch('/api/create-checkout-session', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
