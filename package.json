@@ -7,6 +7,6 @@
   "license": "ISC",
   "dependencies": {
     "stripe": "^14.0.0",
-    "resend": "^3.0.0"
+    "@notionhq/client": "^2.2.0"
   }
 }
