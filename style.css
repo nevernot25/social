@@ -251,21 +251,23 @@ body {
 
 /* Trust Features */
 .trust-features {
-    max-width: 1600px;
+    max-width: 100%;
     margin: 4rem auto 0;
-    padding: 3rem 4rem;
+    padding: 4rem 6rem;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .trust-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 6rem;
+    gap: 8rem;
+    max-width: 1800px;
+    margin: 0 auto;
 }
 
 .trust-item {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
     text-align: left;
@@ -281,11 +283,11 @@ body {
 
 .trust-content {
     flex: 1;
-    min-width: 0;
+    width: 100%;
 }
 
 .trust-title {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.5;
