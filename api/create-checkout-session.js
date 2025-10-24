@@ -78,7 +78,9 @@ module.exports = async (req, res) => {
                 lyricCount: lyricCount.toString(),
                 topicCount: topicCount.toString(),
                 songLink: songLink,
-                genre: genre
+                genre: genre,
+                delivery: fastDelivery ? 'Fast (5 days)' : 'Normal (2 weeks)',
+                voucher: voucherCode || 'None'
             }
         });
 

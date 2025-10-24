@@ -6,6 +6,7 @@
   "author": "PWRD",
   "license": "ISC",
   "dependencies": {
-    "stripe": "^14.0.0"
+    "stripe": "^14.0.0",
+    "resend": "^3.0.0"
   }
 }
