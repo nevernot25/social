@@ -1,8 +1,8 @@
 // Pricing
 const PRICES = {
-    lyric: { first: 80, additional: 40 },
-    topic: { first: 60, additional: 30 },
-    combo: 120,
+    lyric: { first: 50, additional: 30 },
+    topic: { first: 40, additional: 20 },
+    combo: 80,
     fastDelivery: 20
 };
 
