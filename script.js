@@ -131,6 +131,14 @@ function calculatePrice() {
         document.getElementById('voucher-discount-row').style.display = 'none';
     }
 
+    // Show bonus posts if subtotal >= $100
+    const subtotalBeforeTax = subtotal + (voucherApplied ? voucherDiscount : 0);
+    if (subtotalBeforeTax >= 100) {
+        document.getElementById('bonus-posts-row').style.display = 'flex';
+    } else {
+        document.getElementById('bonus-posts-row').style.display = 'none';
+    }
+
     // Calculate tax
     const tax = subtotal * TAX_RATE;
 
@@ -138,7 +146,7 @@ function calculatePrice() {
     const total = subtotal + tax;
 
     // Update display
-    document.getElementById('subtotal-amount').textContent = `$${(subtotal + (voucherApplied ? voucherDiscount : 0)).toFixed(2)}`;
+    document.getElementById('subtotal-amount').textContent = `$${subtotalBeforeTax.toFixed(2)}`;
     document.getElementById('tax-amount').textContent = `$${tax.toFixed(2)}`;
     document.getElementById('total-amount').textContent = `$${total.toFixed(2)}`;
     document.getElementById('checkout-btn').disabled = false;
