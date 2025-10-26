@@ -424,66 +424,52 @@ body {
 
 /* Promo Banner */
 .promo-banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 1rem 1.5rem;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.02) 100%);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 8px;
-    margin-bottom: 2rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--black);
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .promo-banner svg {
-    flex-shrink: 0;
-    color: var(--black);
-    opacity: 0.7;
+    display: none;
 }
 
 .promo-banner span {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    color: var(--black);
+    color: var(--white);
     letter-spacing: -0.01em;
-    line-height: 1.5;
 }
 
 @media (max-width: 768px) {
     .promo-banner {
-        padding: 0.875rem 1rem;
-        gap: 0.5rem;
-    }
-
-    .promo-banner svg {
-        width: 16px;
-        height: 16px;
+        padding: 0.65rem 1rem;
     }
 
     .promo-banner span {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 }
 
 .calculator {
-    margin-top: 2rem;
+    margin-top: 0;
     background: rgba(0, 0, 0, 0.02);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
 /* Checkout Sections */
 .checkout-section {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .checkout-section:last-of-type {
     border-bottom: none;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .package-header {
@@ -494,7 +480,7 @@ body {
 }
 
 .checkout-section-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 0;
     letter-spacing: -0.01em;
@@ -527,17 +513,17 @@ body {
 .checkout-inputs {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.65rem;
 }
 
 .checkout-input {
     width: 100%;
-    padding: 0.75rem 1rem;
+    padding: 0.65rem 0.875rem;
     background: var(--white);
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 6px;
     color: var(--black);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -568,7 +554,7 @@ select.checkout-input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
 }
 
 .package-item:not(:last-child) {
@@ -637,18 +623,18 @@ select.checkout-input {
 /* Promo Button */
 .promo-btn {
     width: 100%;
-    padding: 0.75rem 1rem;
+    padding: 0.65rem 0.875rem;
     background: var(--white);
     border: 1px dashed rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     color: var(--black);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     letter-spacing: -0.01em;
     cursor: pointer;
     transition: all 0.2s ease;
-    margin-top: 1rem;
+    margin-top: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -668,14 +654,14 @@ select.checkout-input {
 .delivery-options {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.65rem;
 }
 
 .delivery-option {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem;
+    gap: 0.65rem;
+    padding: 0.75rem 0.875rem;
     background: var(--white);
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 6px;
@@ -755,15 +741,15 @@ select.checkout-input {
 
 /* Order Summary */
 .order-summary {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
 }
 
 .summary-label {

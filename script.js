@@ -23,7 +23,10 @@ const stripe = Stripe('pk_live_51SLngBFMBNQFsANi1d0FF4ZyyDohJoovuwdW9NJtk14fBe4F
 function updateCount(type, change) {
     counts[type] = Math.max(0, counts[type] + change);
     document.getElementById(`${type}-count`).textContent = counts[type];
-    bundleApplied = false;
+    // Keep bundle applied if we still have at least 1 lyric and 1 topic
+    if (bundleApplied && (counts.lyric === 0 || counts.topic === 0)) {
+        bundleApplied = false;
+    }
     calculatePrice();
 }
 
