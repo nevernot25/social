@@ -1,8 +1,8 @@
 // Pricing
 const PRICES = {
-    lyric: { first: 50, additional: 30 },
-    topic: { first: 40, additional: 20 },
-    combo: 80,
+    lyric: { first: 40, additional: 20 },
+    topic: { first: 30, additional: 15 },
+    combo: 60,
     fastDelivery: 20
 };
 
@@ -206,7 +206,7 @@ async function checkout() {
         description += `${topic} Topic Post${topic > 1 ? 's' : ''}`;
     }
     description += ` | Genre: ${genre} | Song: ${songLink}`;
-    description += ` | Delivery: ${fastDelivery ? 'Fast (5 days)' : 'Normal (2 weeks)'}`;
+    description += ` | Delivery: ${fastDelivery ? 'Fast (4 days)' : 'Normal (8 days)'}`;
     if (voucherApplied) {
         description += ` | Voucher: ${voucherCode}`;
     }

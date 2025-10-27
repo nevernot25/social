@@ -70,6 +70,7 @@
 5. Click **"Confirm"**
 6. Copy the database ID from URL (same as before)
 
+
 ---
 
 ### Step 5: Add to Vercel
