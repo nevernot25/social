@@ -126,22 +126,9 @@
             <div class="promo-badge">Spend $100+, get 2 free posts on our smaller pages</div>
             <!-- Contact Info -->
             <div class="checkout-section">
-                <h3 class="checkout-section-title">Contact</h3>
+                <h3 class="checkout-section-title">Song</h3>
                 <div class="checkout-inputs">
                     <input type="text" id="song-link" class="checkout-input" placeholder="TikTok song link (e.g., https://tiktok.com/@artist/video/...)" />
-                    <select id="genre-select" class="checkout-input">
-                        <option value="">Select genre</option>
-                        <option value="Pop">Pop</option>
-                        <option value="Hip Hop">Hip Hop / Rap</option>
-                        <option value="Country">Country</option>
-                        <option value="EDM">EDM</option>
-                        <option value="Latin">Latin</option>
-                        <option value="R&B">R&B</option>
-                        <option value="Rock">Rock</option>
-                        <option value="Indie">Indie</option>
-                        <option value="Folk">Folk</option>
-                        <option value="Afrobeats">Afrobeats</option>
-                    </select>
                 </div>
             </div>
 
@@ -187,27 +174,6 @@
                 </button>
             </div>
 
-            <!-- Delivery Speed -->
-            <div class="checkout-section">
-                <h3 class="checkout-section-title">Delivery</h3>
-                <div class="delivery-options">
-                    <label class="delivery-option">
-                        <input type="radio" name="delivery" value="normal" checked onchange="calculatePrice()">
-                        <div class="delivery-info">
-                            <div class="delivery-name">Normal Delivery</div>
-                            <div class="delivery-time">Within 8 days · Free</div>
-                        </div>
-                    </label>
-                    <label class="delivery-option">
-                        <input type="radio" name="delivery" value="fast" onchange="calculatePrice()">
-                        <div class="delivery-info">
-                            <div class="delivery-name">Fast Delivery</div>
-                            <div class="delivery-time">4 days · +$20</div>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
             <!-- Voucher Code -->
             <div class="checkout-section">
                 <div class="voucher-input-container">
@@ -234,10 +200,6 @@
                 <div class="summary-row" id="bonus-posts-row" style="display: none;">
                     <span class="summary-label">Bonus (2 posts on smaller pages)</span>
                     <span class="summary-value bonus">FREE</span>
-                </div>
-                <div class="summary-row" id="fast-delivery-row" style="display: none;">
-                    <span class="summary-label">Fast delivery</span>
-                    <span class="summary-value">+$20</span>
                 </div>
                 <div class="summary-row" id="tax-row">
                     <span class="summary-label">Taxes (8.1%)</span>

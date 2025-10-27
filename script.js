@@ -2,8 +2,7 @@
 const PRICES = {
     lyric: { first: 40, additional: 20 },
     topic: { first: 30, additional: 15 },
-    combo: 60,
-    fastDelivery: 20
+    combo: 60
 };
 
 let counts = { lyric: 0, topic: 0 };
@@ -83,7 +82,6 @@ function calculatePrice() {
         document.getElementById('voucher-discount-row').style.display = 'none';
         document.getElementById('original-price').style.display = 'none';
         document.getElementById('estimated-reach').style.display = 'none';
-        document.getElementById('fast-delivery-row').style.display = 'none';
         return;
     }
 
@@ -109,15 +107,6 @@ function calculatePrice() {
             subtotal += PRICES.topic.first;
             if (topic > 1) subtotal += (topic - 1) * PRICES.topic.additional;
         }
-    }
-
-    // Add fast delivery
-    const fastDelivery = document.querySelector('input[name="delivery"]:checked')?.value === 'fast';
-    if (fastDelivery) {
-        subtotal += PRICES.fastDelivery;
-        document.getElementById('fast-delivery-row').style.display = 'flex';
-    } else {
-        document.getElementById('fast-delivery-row').style.display = 'none';
     }
 
     // Apply voucher discount
@@ -153,7 +142,7 @@ function calculatePrice() {
 
     // Show/hide bundle discount
     if (showBundleDiscount) {
-        const bundleDiscount = originalPrice - (subtotal + (voucherApplied ? voucherDiscount : 0) - (fastDelivery ? PRICES.fastDelivery : 0));
+        const bundleDiscount = originalPrice - (subtotal + (voucherApplied ? voucherDiscount : 0));
         document.getElementById('bundle-discount-amount').textContent = `−$${bundleDiscount.toFixed(2)}`;
         document.getElementById('bundle-discount-row').style.display = 'flex';
     } else {
@@ -171,8 +160,6 @@ function calculatePrice() {
 async function checkout() {
     const { lyric, topic } = counts;
     const songLink = document.getElementById('song-link').value;
-    const genre = document.getElementById('genre-select').value;
-    const fastDelivery = document.querySelector('input[name="delivery"]:checked')?.value === 'fast';
 
     if (lyric === 0 && topic === 0) {
         alert('Please select at least one post type');
@@ -190,11 +177,6 @@ async function checkout() {
         return;
     }
 
-    if (!genre) {
-        alert('Please select a genre');
-        return;
-    }
-
     const total = parseFloat(document.getElementById('total-amount').textContent.replace('$', ''));
 
     let description = 'PWRD Campaign: ';
@@ -205,8 +187,7 @@ async function checkout() {
     } else {
         description += `${topic} Topic Post${topic > 1 ? 's' : ''}`;
     }
-    description += ` | Genre: ${genre} | Song: ${songLink}`;
-    description += ` | Delivery: ${fastDelivery ? 'Fast (4 days)' : 'Normal (8 days)'}`;
+    description += ` | Song: ${songLink}`;
     if (voucherApplied) {
         description += ` | Voucher: ${voucherCode}`;
     }
@@ -218,12 +199,10 @@ async function checkout() {
             body: JSON.stringify({
                 lyricCount: lyric,
                 topicCount: topic,
-                fastDelivery: fastDelivery,
                 voucherCode: voucherApplied ? voucherCode : null,
                 total,
                 description,
-                songLink,
-                genre
+                songLink
             })
         });
 
