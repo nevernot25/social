@@ -57,6 +57,8 @@ body {
     font-size: 1.25rem;
     font-weight: 800;
     letter-spacing: -0.03em;
+    max-height: 24px;
+    height: auto;
 }
 
 .nav-links {
@@ -975,6 +977,8 @@ select.checkout-input {
     font-weight: 800;
     letter-spacing: -0.03em;
     margin-bottom: 0.25rem;
+    max-height: 150px;
+    height: auto;
 }
 
 .footer-tagline {
